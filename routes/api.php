@@ -3,6 +3,7 @@
 use App\Http\Controllers\APIS\ContactUsController;
 use App\Http\Controllers\APIS\ProductController;
 use App\Http\Controllers\APIS\UserController;
+use App\Http\Controllers\APIS\WishListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("/reset-password",[UserController::class,"resetPassword"]);
     Route::post("/update-profile",[UserController::class,"updateProfile"]);
     Route::post("/logout",[UserController::class,"logout"]);
+
+    // wishlists
+    Route::post("/add-to-wishlist",[WishListController::class,"add_to_wishlist"]);
+    Route::post("/remove-from-wishlist",[WishListController::class,"remove_from_wishlist"]);
+    Route::get("/get-wishlist",[WishListController::class,"get_wishlist"]);
+
+    Route::get("/get-wishlist",[WishListController::class,"get_wishlist"]);
+    Route::post("/add-price-alerts",[WishListController::class,"add_price_alerts"]);
+    Route::post("/get-price-alerts",[WishListController::class,"get_price_alerts"]);
 });
 Route::post("/login",[UserController::class,"login"]);
 Route::post("/register",[UserController::class,"signUp"]);
